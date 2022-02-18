@@ -112,7 +112,29 @@ class Node{
 
 
     }
+ int level(Node *p){
+     int x=0,y=0;
+     if(p==NULL)
+        return 0;
+     x=level(p->lchild);
+     y=level(p->rchild);
+     if(x>y)
+        return x+1;
+     else   
+        return y+1;   
+ } 
 
+ int height(Node *p){
+     int x=0,y=0;
+     if(p==NULL)
+        return -1;
+     x=height(p->lchild);
+     y=height(p->rchild);
+     if(x>y)
+        return x+1;
+     else   
+        return y+1;   
+ } 
 
 
 int main(){
@@ -146,4 +168,6 @@ int main(){
     cout<<"Number of Nodes in the Binary Tree are : "<<countNodes(root)<<endl;  
 
     cout<<"Sum of all Nodes : "<<sumofallnodes(root)<<endl;
+    cout<<"Height of Tree : "<<height(root)<<endl;
+    cout<<"Levels in the Binary tree : "<<level(root)<<endl;
 }
