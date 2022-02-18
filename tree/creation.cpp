@@ -99,6 +99,22 @@ class Node{
   }  
 
 
+    int sumofallnodes(Node *p){
+        int x,y;
+        if(p!=NULL){
+            x=sumofallnodes(p->lchild);
+            y=sumofallnodes(p->rchild);
+            return x+y+p->data;
+            
+
+        }
+    return 0;
+
+
+    }
+
+
+
 int main(){
     
     Node*root=new Node(10);
@@ -128,4 +144,6 @@ int main(){
    levelorder(root);
     cout<<endl;
     cout<<"Number of Nodes in the Binary Tree are : "<<countNodes(root)<<endl;  
+
+    cout<<"Sum of all Nodes : "<<sumofallnodes(root)<<endl;
 }
