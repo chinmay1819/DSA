@@ -82,8 +82,8 @@ int search(Node*head,int key,int num){
                  
 }
 
-
-
+ 
+ 
 int main(){
     Node*head=new Node(10);
     head->next=new Node(20);
