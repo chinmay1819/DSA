@@ -24,28 +24,63 @@ void print(Node*head){
 
 //inserting at the end of the linked list
 
-void insertatend(Node*head,Node*in){
+Node* insertatend(Node*head,Node*in){
     Node*p=head;
     while(p->next!=NULL)
         p=p->next;
     p->next=in;
-        
+
+    return head;    
 }
 
 //deleting last Node 
 
-void deletelastnode(Node*head){
+Node* deletelastnode(Node*head){
     Node*p=head;
     while(p->next->next!=NULL)
         p=p->next;
 
     p->next=NULL;    
 
+    return head;
 }
 
+// inserting at a particular position 
+Node* insertatpos(Node*head,int x,int pos){
+    if(head==NULL){
+        Node*temp=new Node(x);
+        temp->next=head;
+        return temp;
+    }
+    
+    int i=1;
+    Node*p=head;
+    Node*t=new Node(x);
+    while(i<pos-1){
+        p=p->next;
+        i++;
+    }
+    t->next=p->next;
+    p->next=t;
 
+    return head;
+}
 
+// searching a node by key
 
+int search(Node*head,int key,int num){
+    Node*p=head;
+    
+    if(p==NULL)
+        return -1;
+
+    if(p->data==key)
+        return num;
+    else
+        search(p->next,key,num+1);
+
+                 
+}
 
 
 
@@ -62,4 +97,11 @@ int main(){
     cout<<"After deleting the last node "<<endl;
     deletelastnode(head);
     print(head);
+    cout<<"After adding a node at a position"<<endl;
+    int k=70;int pos=3;
+    insertatpos(head,k,pos);
+    print(head);
+    int key=50;
+    int num=1;
+    cout<<"Element is found at position : "<<search(head,key,num)<<endl;
 }
