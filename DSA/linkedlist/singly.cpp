@@ -81,6 +81,32 @@ int search(Node*head,int key,int num){
 
                  
 }
+int max(Node*head){
+    Node*p=head;
+    if(p==NULL)
+        return INT32_MAX;
+    int ans=p->data;
+    while(p->next!=NULL){
+        p=p->next;
+        if(ans<p->data)
+            ans=p->data;
+    }
+return ans;
+}
+
+int min(Node*head){
+    Node*p=head;
+    if(p==NULL)
+        return INT32_MAX;
+    int ans=p->data;
+    while(p->next!=NULL){
+        p=p->next;
+        if(ans>p->data)
+            ans=p->data;
+    }
+return ans;
+}
+
 
  
  
@@ -104,4 +130,8 @@ int main(){
     int key=50;
     int num=1;
     cout<<"Element is found at position : "<<search(head,key,num)<<endl;
+
+    cout<<"Maximum of the ll : "<<max(head)<<endl;
+    cout<<"Minimum of the ll : "<<min(head)<<endl;
+
 }
